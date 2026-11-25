@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+<!-- This site is hosted on Netlify. Anyone can build and deploy a site
+     like this one for free: https://netlify.new/?utm_campaign=loops&utm_source=ai-legible&utm_medium=owned&utm_content=comment&utm_id=859e0ffb-f7ef-4f7f-baea-7430a3e4b8b0
+     Netlify hosting facts for this site: static/SSR served via Netlify Edge. -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AUTO SHOPPING | Zamonaviy Avtomobillar Savdo Saloni</title>
+  <meta name="description" content="120 dan ortiq original avtomobillar savdosi. Har bir mashinaning 3 burchakli (oldi, yon, orqa) original fotosuratlari va Telegram orqali tezkor buyurtma!">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Main CSS -->
+  <link rel="stylesheet" href="./stayle.css">
+</head>
+<body>
+
+  <!-- ================= TOP NOTICE BAR ================= -->
+  <div class="top-bar">
+    <div class="container top-bar-content">
+      <div class="top-bar-left">
+        <span><i class="fa-solid fa-shield-halved"></i> 100% Original avtomobillar kafolati</span>
+        <span class="desktop-only"><i class="fa-solid fa-truck-fast"></i> O'zbekiston bo'ylab yetkazib berish</span>
+      </div>
+      <div class="top-bar-right">
+        <a href="tel:+998901234567"><i class="fa-solid fa-phone"></i> +998 (90) 123-45-67</a>
+        <span class="bot-status-indicator" id="botStatusPill">
+          <span class="status-dot"></span> Telegram Bot Ulandi
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= HEADER & NAVBAR ================= -->
+  <header class="header" id="header">
+    <div class="container navbar">
+      <a href="#" class="logo">
+        <div class="logo-icon"><i class="fa-solid fa-car-rear"></i></div>
+        <div class="logo-text">
+          <span class="logo-title">AUTO <span class="accent">SHOPPING</span></span>
+          <span class="logo-subtitle">PREMIUM CAR MARKET</span>
+        </div>
+      </a>
+
+      <nav class="nav-menu" id="navMenu">
+        <a href="#katalog" class="nav-link active"><i class="fa-solid fa-car"></i> Mashinalar (128)</a>
+        <a href="#brendlar" class="nav-link"><i class="fa-solid fa-tags"></i> Brendlar</a>
+        <a href="#afzalliklar" class="nav-link"><i class="fa-solid fa-award"></i> Afzalliklar</a>
+        <a href="#aloqa" class="nav-link"><i class="fa-solid fa-headset"></i> Bog'lanish</a>
+      </nav>
+
+      <div class="header-actions">
+        <button class="cart-btn" id="openCartBtn" aria-label="Savatni ko'rish">
+          <i class="fa-solid fa-cart-shopping"></i>
+          <span class="cart-label">Savat</span>
+          <span class="cart-badge" id="cartCount">0</span>
+        </button>
+        <button class="mobile-toggle-btn" id="mobileMenuBtn" aria-label="Menyu">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ================= HERO SECTION ================= -->
+  <section class="hero-section">
+    <div class="hero-overlay"></div>
+    <div class="container hero-content">
+      <div class="hero-badge">
+        <i class="fa-solid fa-certificate"></i> AUTO SHOPPING • Rasmiy Onlayn Avtosalon
+      </div>
+      <h1 class="hero-title">
+        Orzuingizdagi Avtomobilni <br>
+        <span class="gradient-text">Auto Shopping Bilan Xarid Qiling</span>
+      </h1>
+      <p class="hero-desc">
+        120 dan ortiq original avtomobillar katalogi. Har bir modelning o'ziga tegishli aniq 3 burchakli (oldi, yonbosh, orqa) fotosuratlari, to'liq texnik xarakteristikalari va Telegram bot orqali tezkor buyurtma!
+      </p>
+
+      <!-- HERO QUICK SEARCH -->
+      <div class="hero-search-box">
+        <div class="search-field">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <input type="text" id="heroSearchInput" placeholder="Model yoki brend nomini qidiring (masalan: Malibu, BMW M5, G-Class, BYD, Camry)...">
+        </div>
+        <div class="search-select">
+          <i class="fa-solid fa-charging-station"></i>
+          <select id="heroFuelFilter">
+            <option value="">Barcha yoqilg'i turlari</option>
+            <option value="Benzin">Benzin</option>
+            <option value="Elektr">Elektr (EV)</option>
+            <option value="Gibrid">Gibrid (Hybrid)</option>
+            <option value="Dizel">Dizel</option>
+          </select>
+        </div>
+        <button class="btn-primary" id="heroSearchBtn">
+          <span>Qidirish</span> <i class="fa-solid fa-arrow-right"></i>
+        </button>
+      </div>
+
+      <!-- HERO STATS -->
+      <div class="hero-stats">
+        <div class="stat-card">
+          <span class="stat-number">128 ta</span>
+          <span class="stat-label">Aniq Avtomobil Modellari</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-number">3 Burchak</span>
+          <span class="stat-label">Bitta Mashinaning 3 Rasmi</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-number">Telegram Bot</span>
+          <span class="stat-label">To'g'ridan-to'g'ri Buyurtma</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-number">100%</span>
+          <span class="stat-label">Shaffof & Ishonchli</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= POPULAR BRANDS BAR ================= -->
+  <section class="brands-section" id="brendlar">
+    <div class="container">
+      <div class="brand-chips-wrapper">
+        <div class="brand-chips" id="brandChipsContainer">
+          <!-- Dynamically populated via JS -->
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= MAIN CATALOG SECTION ================= -->
+  <section class="catalog-section" id="katalog">
+    <div class="container">
+      
+      <!-- Section Header -->
+      <div class="section-header">
+        <div>
+          <span class="section-tag"><i class="fa-solid fa-car-side"></i> Keng Assortiment</span>
+          <h2 class="section-title">Avtomobillar Katalogi</h2>
+          <p class="section-subtitle">Har bir mashinaning old, yonbosh va orqa burchakdagi original tasvirlari bilan tanishing</p>
+        </div>
+
+        <!-- Filter Controls -->
+        <div class="filter-controls">
+          <div class="filter-group">
+            <label for="categoryFilter"><i class="fa-solid fa-shapes"></i> Turi:</label>
+            <select id="categoryFilter" class="filter-select">
+              <option value="">Barcha kuzovlar</option>
+              <option value="Sedan">Sedan</option>
+              <option value="SUV">SUV (Yo'ltanlamas)</option>
+              <option value="Krossover">Krossover</option>
+              <option value="Sportkar">Sportkar</option>
+              <option value="Elektromobil">Elektromobil</option>
+              <option value="Lyuks">Lyuks / VIP</option>
+              <option value="Miniven">Miniven</option>
+              <option value="Pikap">Pikap</option>
+            </select>
+          </div>
+
+          <div class="filter-group">
+            <label for="sortFilter"><i class="fa-solid fa-arrow-down-short-wide"></i> Saralash:</label>
+            <select id="sortFilter" class="filter-select">
+              <option value="default">Tavsiya etilgan</option>
+              <option value="price-asc">Narxi: Arzondan qimmatga</option>
+              <option value="price-desc">Narxi: Qimmatdan arzonga</option>
+              <option value="hp-desc">Quvvati: Kuchli motorlar</option>
+              <option value="year-desc">Yili: Eng yangilar</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <!-- ACTIVE FILTERS SUMMARY & COUNT -->
+      <div class="catalog-bar">
+        <div class="catalog-count" id="catalogCountText">
+          Ko'rsatilmoqda: <strong>0</strong> ta avtomobil
+        </div>
+        <div class="reset-filter-wrap" id="resetFilterWrap" style="display: none;">
+          <button class="btn-text" id="resetFilterBtn"><i class="fa-solid fa-rotate-left"></i> Filtrlarni tozalash</button>
+        </div>
+      </div>
+
+      <!-- CARS GRID -->
+      <div class="cars-grid" id="carsGrid">
+        <!-- Rendered by JavaScript -->
+      </div>
+
+      <!-- EMPTY STATE -->
+      <div class="empty-state" id="emptyState" style="display: none;">
+        <i class="fa-solid fa-car-burst"></i>
+        <h3>Mos keluvchi avtomobil topilmadi</h3>
+        <p>Qidiruv so'zini yoki filtrlarni o'zgartirib ko'ring</p>
+        <button class="btn-secondary" id="emptyResetBtn">Barcha mashinalarni ko'rsatish</button>
+      </div>
+
+      <!-- LOAD MORE BUTTON -->
+      <div class="load-more-wrap" id="loadMoreWrap">
+        <button class="btn-load-more" id="loadMoreBtn">
+          <span>Yana ko'rsatish</span>
+          <i class="fa-solid fa-chevron-down"></i>
+        </button>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================= ADVANTAGES ================= -->
+  <section class="advantages-section" id="afzalliklar">
+    <div class="container">
+      <div class="section-header text-center">
+        <span class="section-tag"><i class="fa-solid fa-star"></i> Nega Auto Shopping?</span>
+        <h2 class="section-title">Mijozlarimiz Uchun Maksimal Qulaylik</h2>
+        <p class="section-subtitle">Har bir xarid aniq, to'g'ri va xavfsiz bo'lishini kafolatlaymiz</p>
+      </div>
+
+      <div class="advantages-grid">
+        <div class="adv-card">
+          <div class="adv-icon"><i class="fa-solid fa-camera-rotate"></i></div>
+          <h3>Aynan Shu Mashinaning 3 Rasmi</h3>
+          <p>Hech qanday chalkashliksiz: agar BMW M5 tanlasangiz, uning oldi, yoni va orqasidan aynan BMW M5 ning o'zi aks etadi.</p>
+        </div>
+
+        <div class="adv-card">
+          <div class="adv-icon"><i class="fa-brands fa-telegram"></i></div>
+          <h3>Telegram Botga Avtomatik Buyurtma</h3>
+          <p>Tanlangan avtomobil rasmi va siz kiritgan ma'lumotlar bir zumda Telegram botga kelib tushadi.</p>
+        </div>
+
+        <div class="adv-card">
+          <div class="adv-icon"><i class="fa-solid fa-file-shield"></i></div>
+          <h3>100% Rasmiy Shartnoma</h3>
+          <p>Barcha avtomobillar to'liq bojxona rasmiylashtiruvidan o'tgan va rasmiy dilerlik kafolatiga ega.</p>
+        </div>
+
+        <div class="adv-card">
+          <div class="adv-icon"><i class="fa-solid fa-hand-holding-dollar"></i></div>
+          <h3>Qulay To'lov & Kredit</h3>
+          <p>Naqd, avtokredit yoki lizing orqali eng qulay shartlarda xarid qilish imkoniyati.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= CONTACT SECTION ================= -->
+  <section class="contact-section" id="aloqa">
+    <div class="container">
+      <div class="contact-box">
+        <div class="contact-info">
+          <span class="section-tag"><i class="fa-solid fa-headset"></i> 24/7 Aloqa</span>
+          <h2>Savollaringiz bormi? Auto Shopping jamoasi yordam beradi!</h2>
+          <p>Biz bilan bog'laning yoki sayt orqali buyurtma qoldiring, mutaxassislarimiz tezkor aloqaga chiqishadi.</p>
+          
+          <div class="contact-items">
+            <div class="contact-item">
+              <i class="fa-solid fa-location-dot"></i>
+              <div>
+                <strong>Manzilimiz:</strong>
+                <span>Andijon shahar</span>
+              </div>
+            </div>
+            <div class="contact-item">
+              <i class="fa-solid fa-phone"></i>
+              <div>
+                <strong>Telefon raqam:</strong>
+                <span>+998 (95) 472-32-22 / +998 (71) 200-00-00</span>
+              </div>
+            </div>
+            <div class="contact-item">
+              <i class="fa-brands fa-telegram"></i>
+              <div>
+                <strong>Telegram Bot:</strong>
+                <span id="botContactUsername">@Shoping118_bot</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="contact-card-badge">
+          <i class="fa-solid fa-car-on"></i>
+          <h4>Test-drayvga yoziling</h4>
+          <p>Yoqtirgan mashinangizni salonda sinab ko'rish uchun sayt orqali buyurtma qoldiring!</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="footer">
+    <div class="container footer-content">
+      <div class="footer-left">
+        <div class="logo">
+          <div class="logo-icon"><i class="fa-solid fa-car-rear"></i></div>
+          <span class="logo-title">AUTO <span class="accent">SHOPPING</span></span>
+        </div>
+        <p class="footer-text">O'zbekistondagi zamonaviy onlayn avtosalon. 128 ta avtomobil, aynan bir xil avtomobilning 3 burchakli fotosuratlari va Telegram bot integratsiyasi.</p>
+      </div>
+      <div class="footer-right">
+        <p>&copy; 2026-2027 AUTO SHOPPING. Barcha huquqlar himoyalangan.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ================= CAR DETAIL MODAL (3 BURCHAKLI RASM KO'RISH) ================= -->
+  <div class="modal-overlay" id="carDetailModal" aria-hidden="true">
+    <div class="modal-container car-detail-container">
+      <button class="modal-close-btn" id="closeDetailModalBtn" aria-label="Yopish">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+
+      <div class="detail-layout">
+        <!-- LEFT: 3 ANGLES GALLERY (AYNAN BITTA MASHINANING 3 XIL BURCHAGI) -->
+        <div class="detail-gallery">
+          <div class="gallery-main-view">
+            <img id="detailMainImg" src="" alt="Mashina rasmi">
+            <div class="angle-badge" id="currentAngleBadge">
+              <i class="fa-solid fa-eye"></i> Old ko'rinishi
+            </div>
+          </div>
+
+          <!-- 3 ANGLE SWITCH TABS -->
+          <div class="angle-switch-tabs">
+            <button class="angle-btn active" data-angle="front">
+              <i class="fa-solid fa-eye"></i> Old ko'rinishi
+            </button>
+            <button class="angle-btn" data-angle="side">
+              <i class="fa-solid fa-arrows-left-right"></i> Yonbosh ko'rinishi
+            </button>
+            <button class="angle-btn" data-angle="rear">
+              <i class="fa-solid fa-car-rear"></i> Orqa ko'rinishi
+            </button>
+          </div>
+
+          <!-- THUMBNAILS -->
+          <div class="gallery-thumbs">
+            <div class="thumb-item active" data-angle="front">
+              <img id="thumbFront" src="" alt="Oldi">
+              <span>Oldi</span>
+            </div>
+            <div class="thumb-item" data-angle="side">
+              <img id="thumbSide" src="" alt="Yoni">
+              <span>Yoni</span>
+            </div>
+            <div class="thumb-item" data-angle="rear">
+              <img id="thumbRear" src="" alt="Orqasi">
+              <span>Orqasi</span>
+            </div>
+          </div>
+
+          <div class="photo-accuracy-note">
+            <i class="fa-solid fa-circle-check"></i> <span>Ushbu 3 ta rasm aynan shu bitta modelga tegishli</span>
+          </div>
+        </div>
+
+        <!-- RIGHT: SPECS & BUY ACTION -->
+        <div class="detail-info">
+          <div class="detail-brand-badge" id="detailBrandBadge">BREND</div>
+          <h2 class="detail-title" id="detailTitle">Avtomobil Nomi</h2>
+          <p class="detail-desc" id="detailDescription">Tavsif...</p>
+
+          <div class="detail-price-box">
+            <div class="detail-price-usd" id="detailPriceUSD">$0</div>
+            <div class="detail-price-uzs" id="detailPriceUZS">0 so'm</div>
+          </div>
+
+          <!-- SPECS TABLE -->
+          <div class="specs-grid">
+            <div class="spec-cell">
+              <span class="spec-label"><i class="fa-solid fa-calendar-days"></i> Ishlab chiqarilgan yili</span>
+              <span class="spec-val" id="detailYear">-</span>
+            </div>
+            <div class="spec-cell">
+              <span class="spec-label"><i class="fa-solid fa-gas-pump"></i> Yoqilg'i turi</span>
+              <span class="spec-val" id="detailFuel">-</span>
+            </div>
+            <div class="spec-cell">
+              <span class="spec-label"><i class="fa-solid fa-gears"></i> Uzatma qutisi</span>
+              <span class="spec-val" id="detailTransmission">-</span>
+            </div>
+            <div class="spec-cell">
+              <span class="spec-label"><i class="fa-solid fa-gauge-high"></i> Dvigatel / Quvvat</span>
+              <span class="spec-val" id="detailEngine">-</span>
+            </div>
+            <div class="spec-cell">
+              <span class="spec-label"><i class="fa-solid fa-horse-head"></i> Ot kuchi</span>
+              <span class="spec-val" id="detailHorsepower">-</span>
+            </div>
+            <div class="spec-cell">
+              <span class="spec-label"><i class="fa-solid fa-road"></i> Yurgan masofasi</span>
+              <span class="spec-val" id="detailMileage">-</span>
+            </div>
+            <div class="spec-cell">
+              <span class="spec-label"><i class="fa-solid fa-palette"></i> Rangi</span>
+              <span class="spec-val" id="detailColor">-</span>
+            </div>
+            <div class="spec-cell">
+              <span class="spec-label"><i class="fa-solid fa-shield-halved"></i> Kafolat</span>
+              <span class="spec-val">3 yil yoki 100,000 km</span>
+            </div>
+          </div>
+
+          <div class="detail-actions">
+            <button class="btn-primary flex-1" id="detailAddToCartBtn">
+              <i class="fa-solid fa-cart-plus"></i> Savatga qo'shish
+            </button>
+            <button class="btn-success flex-1" id="detailDirectCheckoutBtn">
+              <i class="fa-solid fa-bolt"></i> Darhol xarid qilish
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= SHOPPING CART & CHECKOUT DRAWER / MODAL ================= -->
+  <div class="cart-drawer-overlay" id="cartDrawerOverlay" aria-hidden="true">
+    <div class="cart-drawer" id="cartDrawer">
+      
+      <!-- Cart Header -->
+      <div class="cart-drawer-header">
+        <div class="cart-header-title">
+          <i class="fa-solid fa-cart-shopping"></i>
+          <h3>Auto Shopping Savati (<span id="cartDrawerCount">0</span>)</h3>
+        </div>
+        <button class="cart-close-btn" id="closeCartBtn" aria-label="Yopish">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <!-- Cart Body -->
+      <div class="cart-drawer-body">
+        
+        <!-- Empty Cart Notice -->
+        <div class="cart-empty" id="cartEmptyState">
+          <div class="cart-empty-icon"><i class="fa-solid fa-cart-arrow-down"></i></div>
+          <h4>Savatingiz hozircha bo'sh</h4>
+          <p>Katalogdagi 128 ta original avtomobillardan o'zingizga ma'qulini tanlang va "Savatga qo'shish" tugmasini bosing!</p>
+          <button class="btn-primary" id="exploreCarsBtn">Katalogga o'tish</button>
+        </div>
+
+        <!-- Items Container -->
+        <div class="cart-items-wrap" id="cartItemsWrap">
+          <div class="cart-items-list" id="cartItemsList">
+            <!-- Dynamically populated -->
+          </div>
+
+          <!-- Total Calculation -->
+          <div class="cart-summary-box">
+            <div class="summary-row">
+              <span>Tanlangan avtolar soni:</span>
+              <strong id="summaryCarCount">0 ta</strong>
+            </div>
+            <div class="summary-row total-row">
+              <span>Jami summa ($):</span>
+              <strong class="total-usd" id="summaryTotalUSD">$0</strong>
+            </div>
+            <div class="summary-row total-uzs-row">
+              <span>So'mda taxminan:</span>
+              <span class="total-uzs" id="summaryTotalUZS">0 so'm</span>
+            </div>
+          </div>
+
+          <!-- ================= CHECKOUT / RO'YXATDAN O'TISH FORMASI ================= -->
+          <div class="checkout-form-container">
+            <div class="form-header">
+              <i class="fa-solid fa-id-card-clip"></i>
+              <h4>Ro'yxatdan o'tish & Xarid ma'lumotlari</h4>
+            </div>
+            <p class="form-notice">
+              <i class="fa-brands fa-telegram"></i> Ma'lumotlaringiz va tanlangan mashinaning haqiqiy rasmi to'g'ridan-to'g'ri Telegram botga yetib boradi!
+            </p>
+
+            <form id="checkoutForm" novalidate>
+              <!-- Ism va Familiya -->
+              <div class="form-field">
+                <label for="clientFullName"><i class="fa-solid fa-user"></i> Ism va Familiyangiz <span class="required">*</span></label>
+                <input type="text" id="clientFullName" placeholder="Ism va Familiyangizni kiriting..." required>
+                <span class="error-msg" id="nameError">Iltimos, ism va familiyangizni kiriting</span>
+              </div>
+
+              <!-- Telefon Raqam -->
+              <div class="form-field">
+                <label for="clientPhone"><i class="fa-solid fa-phone"></i> Telefon raqamingiz <span class="required">*</span></label>
+                <input type="tel" id="clientPhone" placeholder="telefon raqam kiriting..." required>
+                <span class="error-msg" id="phoneError">Iltimos, to'g'ri telefon raqam kiriting (+998...)</span>
+              </div>
+
+              <!-- Manzil -->
+              <div class="form-field">
+                <label for="clientAddress"><i class="fa-solid fa-location-dot"></i> Yashash manzilingiz / Shahar <span class="required">*</span></label>
+                <input type="text" id="clientAddress" placeholder="To'liq manzilingizni kiriting..." required>
+                <span class="error-msg" id="addressError">Iltimos, manzilingizni kiriting</span>
+              </div>
+
+              <!-- Qisqa Xabar / Izoh -->
+              <div class="form-field">
+                <label for="clientMessage"><i class="fa-solid fa-comment-dots"></i> Qisqa xabar / Qo'shimcha istaklar</label>
+                <textarea id="clientMessage" rows="3" placeholder="Masalan: Kredit shartlari, rang tanlovi yoki salonda ko'rish vaqti..."></textarea>
+              </div>
+
+              <!-- Bot Config Notice if token not set -->
+              <div class="bot-warning-box" id="botConfigAlert" style="display: none;">
+                <i class="fa-solid fa-circle-exclamation"></i>
+                <div>
+                  <strong>Eslatma:</strong> JavaScript faylida Telegram Bot Token yoki Chat ID hali kiritilmagan. Buyurtma test rejimida qabul qilinadi.
+                </div>
+              </div>
+
+              <!-- Submit Button -->
+              <button type="submit" class="btn-checkout" id="submitOrderBtn">
+                <span class="btn-text-content">
+                  <i class="fa-brands fa-telegram"></i> Xaridni tasdiqlash & Botga yuborish
+                </span>
+                <span class="btn-spinner" style="display: none;">
+                  <i class="fa-solid fa-circle-notch fa-spin"></i> Yuborilmoqda...
+                </span>
+              </button>
+            </form>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ================= SUCCESS MODAL ================= -->
+  <div class="modal-overlay" id="successModal" aria-hidden="true">
+    <div class="modal-container success-container text-center">
+      <div class="success-icon-wrap">
+        <i class="fa-solid fa-circle-check"></i>
+      </div>
+      <h3 class="success-title">Buyurtmangiz Muvaffaqiyatli Qabul Qilindi!</h3>
+      <p class="success-desc">
+        Avtomobil rasmi va siz kiritgan ma'lumotlar Telegram botga yuborildi. 
+        Tez orada Auto Shopping menejeri siz ko'rsatgan telefon raqami orqali bog'lanadi!
+      </p>
+
+      <div class="order-receipt-box" id="successReceiptBox">
+        <!-- Rendered order summary -->
+      </div>
+
+      <button class="btn-primary" id="closeSuccessBtn">Tushunarli, Rahmat!</button>
+    </div>
+  </div>
+
+  <!-- TOAST NOTIFICATION CONTAINER -->
+  <div class="toast-container" id="toastContainer"></div>
+
+  <!-- JAVASCRIPT FILES -->
+  <!-- 1. Cars Database (128 exact models with matched 3-angle images) -->
+  <script src="./car.js"></script>
+  <!-- 2. Main App Logic with Telegram Bot Token & Chat ID -->
+  <script src="./script.js"></script>
+</body>
+</html>
+<script async src="/.netlify/scripts/hud?variant=public" data-nf-variant="public" data-netlify-site-id="859e0ffb-f7ef-4f7f-baea-7430a3e4b8b0" data-app-host="app.netlify.com" data-account-tier="free"></script>
